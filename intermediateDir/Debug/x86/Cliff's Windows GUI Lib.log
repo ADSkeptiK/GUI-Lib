@@ -1,0 +1,5 @@
+﻿G:\Visual Studio\IDE Iteself\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8028: The intermediate directory (G:\Cliff's Libraries\Cliff's Windows GUI Lib\intermediateDir\Debug\x86\) contains files shared from another project (Cliff's Windows GUI Lib.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  DXContext.cpp
+  Test.cpp
+  Generating Code...
+  Cliff's Windows GUI Lib.vcxproj -> G:\Cliff's Libraries\Cliff's Windows GUI Lib\Debug\x86\Kliff's Windows GUI Lib.exe
