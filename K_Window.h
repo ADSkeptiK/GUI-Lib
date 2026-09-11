@@ -10,12 +10,13 @@ class K_Window
 public:
 	//Mandatorily get the Name , HInstance and style
 	K_Window(int iCmdShow, HINSTANCE hInstance, PCTSTR TemplateName,
-		PCTSTR windowTitle, WNDPROC MessagePump, DWORD type = WS_OVERLAPPEDWINDOW, const int style = 3,
+		PCTSTR windowTitle, DWORD type = WS_OVERLAPPEDWINDOW, const int style = 3,
 		int x = CW_USEDEFAULT, int y = CW_USEDEFAULT, int size_x = CW_USEDEFAULT,
 		int size_y = CW_USEDEFAULT, HWND parentHandleP = NULL, HMENU menuHandle = NULL, LPVOID param = NULL);
 	void setIcon(LPCTSTR iconId);
 	void setCursor(LPCTSTR iconId);
-	void setWinProc(WNDPROC winproc);
+	
+	
 	//Signs Extra bytes for the shared memory of the class
 	void setExtraByteForClass(const int count);
 	//Signs Extra byte for indivial instances of class
@@ -35,13 +36,21 @@ public:
 	void createWindow(void);
 	void showWindow(void);
 	void firstRender(void);
-	LPARAM enterLoop(void);
+	HWND getWindowHandle(void);
+	MSG*  getterMessage(void);
+	WNDPROC* getterWindowProc(void);
+	//Virtuals
+	virtual void setWinProc(void)=0;
+	virtual LPARAM enterLoop(void) = 0;
+	
 	//~K_Window();
-private:
+protected:
 	// *** MANDATORIES ***
-		//Window's 
+		//Window's  structure
 		WNDCLASS windowStructure;
-		PCTSTR szAppName, windowTitle;
+		//szWindowClassName is window class name
+		PCTSTR szWindowClassName, windowTitle;
+		// Style for loading
 		DWORD dwStyle;
 		//Handle to keep hold of the generated window
 		HWND windowHandle, parentHandle;

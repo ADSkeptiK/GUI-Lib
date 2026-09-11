@@ -27,7 +27,13 @@
     <ClInclude Include="K_Editor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DX\DXContext.h">
+    <ClInclude Include="DX\K_DXContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\K_OpenGLRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,7 +44,16 @@
     <ClCompile Include="K_Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DX\DXContext.cpp">
+    <ClCompile Include="DX\K_DXContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\K_OpenGLRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K_Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

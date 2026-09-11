@@ -1,56 +1,37 @@
 #include <windows.h>
 #include <stdio.h>
 #include "k_resource.h"
-#include "K_Window.h"
-
+#include "CustomWindow.h"
+#include"OpenGL/K_OpenGLRenderer.h"
 
 #ifndef ENTRY
 #define ENTRY int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,\
     PSTR szCmdLine, int iCmdShow) \
 {
 #endif
+
 #ifndef END
 #define END }
 #endif
 
+//Window Procedure Declaration
 
-LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
 
+//Entry point
 ENTRY
- 
-    K_Window window{ iCmdShow,hInstance,(PCTSTR)TEXT("MainWindow"),(PCTSTR)TEXT("Genesis Engine"),(WNDPROC)WndProc};
+
+    CustomWindow window{ iCmdShow,hInstance,(PCTSTR)TEXT("MainWindow"),(PCTSTR)TEXT("Genesis Engine")};
+    window.setWinProc();
     window.setIcon((LPCTSTR)ID_KLIFF_TEST);
     window.setCursor(IDC_CROSS);
     window.regClass();
     window.createWindow();
     window.firstRender();
+    K_OpenGLRenderer ogl_renderer{ &window };
     window.enterLoop();
 
     END
-      
-      LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
-    {
-        HDC         hdc;
-        PAINTSTRUCT ps;
-        RECT        rect;
-        switch (message)
-        {
-        case WM_CREATE:
-            PlaySound(TEXT("hellowin.wav"), NULL, SND_FILENAME | SND_ASYNC);
-            return 0;
-        case WM_PAINT:
-            hdc = BeginPaint(hwnd, &ps);
-            GetClientRect(hwnd, &rect);
-
-            DrawText(hdc, TEXT("TEXT"), -1, &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
-            EndPaint(hwnd, &ps);
-            return 0;
-        case WM_DESTROY:
-            PostQuitMessage(0);
-            return 0;
-        }
-        return DefWindowProc(hwnd, message, wParam, lParam);
-    }
+ 
 
 
 
@@ -59,7 +40,7 @@ LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     PSTR szCmdLine, int iCmdShow)
 {
-    static TCHAR szAppName[] = TEXT("yo");
+    static TCHAR szWindowClassName[] = TEXT("yo");
     HWND         hwnd;
     MSG          msg;
     WNDCLASS     wndclass;
@@ -72,14 +53,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     wndclass.hCursor = LoadCursor(NULL, IDC_CROSS);
     wndclass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
     wndclass.lpszMenuName = NULL;
-    wndclass.lpszClassName = szAppName;
+    wndclass.lpszClassName = szWindowClassName;
     if (!RegisterClass(&wndclass))
     {
         MessageBox(NULL, TEXT("This program requires Windows NT!"),
-            szAppName, MB_ICONERROR);
+            szWindowClassName, MB_ICONERROR);
         return 0;
     }
-    hwnd = CreateWindow(szAppName,                  // window class name
+    hwnd = CreateWindow(szWindowClassName,                  // window class name
         TEXT("Genesis Engine"), // window caption
         WS_OVERLAPPEDWINDOW,        // window style
         CW_USEDEFAULT,              // initial x position

@@ -2,9 +2,9 @@
 #include <tchar.h>
 
 K_Window::K_Window(int iCmdShow,HINSTANCE hInstance,PCTSTR TemplateName,
-PCTSTR windowTitle, WNDPROC MessagePump, DWORD type, const int style ,
+PCTSTR windowTitle, DWORD type, const int style ,
 int x , int y, int size_x ,
-int size_y  ,HWND parentHandleP, HMENU menuHandle, LPVOID param) : szAppName{TemplateName }
+int size_y  ,HWND parentHandleP, HMENU menuHandle, LPVOID param) : szWindowClassName{TemplateName }
 ,parentHandle{parentHandleP},windowMenuHandle{menuHandle}, creationParameters{param},dwStyle{type},x{x},y{y},size_x{size_x},size_y{size_y}
 {
 	this->icmdshow = iCmdShow;
@@ -17,7 +17,7 @@ windowStructure.cbClsExtra = 0;
 windowStructure.cbWndExtra = 0;
 windowStructure.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
 windowStructure.lpszMenuName = NULL;
-windowStructure.lpfnWndProc = MessagePump;
+
 }
 void K_Window::setIcon(LPCTSTR iconId)
 {
@@ -27,10 +27,7 @@ void K_Window::setCursor(LPCTSTR iconId)
 {
 	windowStructure.hCursor=LoadCursor(NULL, MAKEINTRESOURCE(iconId));
 }
-void K_Window::setWinProc(WNDPROC winproc)
-{
-	windowStructure.lpfnWndProc = winproc;
-}
+
 void K_Window::setExtraByteForClass(const int count)
 {
 	windowStructure.cbClsExtra = count;
@@ -54,7 +51,7 @@ void K_Window::regClass(void)
 	if (!RegisterClass(&windowStructure))
 	{
 		MessageBox(NULL, TEXT("This program requires Windows NT!"),
-			szAppName, MB_ICONERROR);
+			szWindowClassName, MB_ICONERROR);
 	}
 
 }
@@ -99,30 +96,31 @@ void K_Window::setIcmdShow(int icmdShow)
 }
 void K_Window::createWindow(void)
 {
-	windowHandle=CreateWindow(szAppName, windowTitle, dwStyle, x, y, size_x, size_y, parentHandle, windowMenuHandle, (windowStructure.hInstance), creationParameters);
+	windowHandle=CreateWindow(szWindowClassName, windowTitle, dwStyle, x, y, size_x, size_y, parentHandle, windowMenuHandle, (windowStructure.hInstance), creationParameters);
 
 }
 void K_Window::showWindow(void)
 {
 	ShowWindow(windowHandle, this->icmdshow);
 }
-
 void K_Window::firstRender(void)
 {
 	ShowWindow(windowHandle, this->icmdshow);
 	UpdateWindow(windowHandle);
 }
-
-LPARAM K_Window::enterLoop(void)
+HWND K_Window::getWindowHandle(void)
 {
+	return HWND((*this).windowHandle);
+}
+MSG* K_Window::getterMessage(void)
+{
+	return &message;
+	// TODO: insert return statement here
+}
 
-	while (GetMessage(&message, NULL, 0, 0))
-	{
-		TranslateMessage(&message);
-		DispatchMessage(&message);
-		
-	}
-	return message.wParam;
+WNDPROC* K_Window::getterWindowProc(void)
+{
+	return &windowStructure.lpfnWndProc;
 }
 
 
