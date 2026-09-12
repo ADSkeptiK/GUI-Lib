@@ -36,16 +36,17 @@
     <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Cliff%27s Windows GUI Lib.rc" />
+    <Image Include="icon1.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="F:\Profile pics\curser.ico" />
-    <Image Include="F:\Profile pics\Genesis_ico.png" />
-    <Image Include="f:\profile pics\icon2.ico" />
-    <Image Include="F:\Profile pics\NUUUUUU.ico" />
-    <Image Include="icon1.ico" />
-    <Image Include="K:\Docs\T.H.E\Ideas\CreationSpecific\Apps\Genesis Game Engine\Genesis_ico.png" />
-    <Image Include="K:\Docs\T.H.E\Ideas\CreationSpecific\Apps\Genesis Game Engine\Genesis_ico1_star filled.png" />
+    <None Include="New Text Document.md" />
+    <None Include="RCa12280" />
+    <None Include="RCb12280" />
+    <None Include="RCc12280" />
+    <None Include="RCd12280" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="LICENSE.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

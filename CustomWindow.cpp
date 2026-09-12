@@ -1,10 +1,12 @@
 #include "CustomWindow.h"
+#include <gl/GL.h>
 LPARAM CustomWindow::enterLoop(void)
 {
 	while (GetMessage(getterMessage(), NULL, 0, 0))
 	{
 		TranslateMessage(&message);
 		DispatchMessage(&message);
+      glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
         
 	}
 	return message.lParam;

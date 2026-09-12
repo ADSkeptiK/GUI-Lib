@@ -1,5 +1,5 @@
 #include "K_OpenGLRenderer.h"
-
+#include <gl/GL.h>
 
 void K_OpenGLRenderer::contextsetting(void)
 {

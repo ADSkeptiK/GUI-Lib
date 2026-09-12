@@ -1,5 +1,5 @@
 #include "../K_Renderer.h"
-#include <gl/GL.h>
+
 #ifndef K_OPENGLCONTEXT_H
 #define K_OPENGLCONTEXT_H
 

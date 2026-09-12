@@ -1,6 +1,6 @@
 #include <windows.h>
 #include <stdio.h>
-#include "k_resource.h"
+//#include "k_resource.h"
 #include "CustomWindow.h"
 #include"OpenGL/K_OpenGLRenderer.h"
 
@@ -22,7 +22,7 @@ ENTRY
 
     CustomWindow window{ iCmdShow,hInstance,(PCTSTR)TEXT("MainWindow"),(PCTSTR)TEXT("Genesis Engine")};
     window.setWinProc();
-    window.setIcon((LPCTSTR)ID_KLIFF_TEST);
+   // window.setIcon((LPCTSTR)ID_KLIFF_TEST);
     window.setCursor(IDC_CROSS);
     window.regClass();
     window.createWindow();
