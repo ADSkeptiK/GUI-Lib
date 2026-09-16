@@ -3,13 +3,19 @@
 #ifndef K_OPENGLCONTEXT_H
 #define K_OPENGLCONTEXT_H
 
+//The OpenGL Renderer Abstraction
+//The Constructor DOES invoke members in it namely contextsetting and renderingloop
+//
 class K_OpenGLRenderer  : public K_Renderer
 {
 public:
+    //implements
+    void renderingLoop(void) override;
     //using K_Renderer::K_Renderer;
     K_OpenGLRenderer(K_WindowPtr windowAddress);
-    void   contextsetting(void) override;
-
+    void   contextsetting(void);
+  virtual  void renderingProcedure(void) =0;
+  
 	//void setFormat(PPIXELFORMATDESCRIPTOR pixelFormatStructure);
 private:
 	//A pixel format descriptor
@@ -33,7 +39,7 @@ private:
     0,                     // reserved  
     0, 0, 0                // layer masks ignored  
     };
-
+    K_OpenGLRenderer* openGLinvoker = this;
 };
 #endif // !
 

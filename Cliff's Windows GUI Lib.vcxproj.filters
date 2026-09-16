@@ -36,6 +36,12 @@
     <ClInclude Include="CustomWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CustomOGLContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserWindowClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test.cpp">
@@ -54,6 +60,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CustomWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomOGLContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UserWindowClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -29,10 +29,18 @@ ENTRY
     window.firstRender();
     K_OpenGLRenderer ogl_renderer{ &window };
     window.enterLoop();
-
+  
     END
  
-
+        /*
+        We left off at the Custom Class you were considering:
+        1- Adding some functions to the Window class
+        2- Changing the existing class into a one called RendererWindow 
+        3- Adding a new class  called renderer window 
+        and figuring out where to define virtuals to mandate the user to
+        create an inheriting class and define the virtuals.
+        
+        */
 
 
 /*

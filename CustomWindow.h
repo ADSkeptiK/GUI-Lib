@@ -1,14 +1,22 @@
 #pragma once
 #include "K_Window.h"
-typedef MSG* msgPtr;
+class CustomOGLContext;
+class K_Renderer;
+typedef class K_Renderer* K_rendererPtr;
+
+//Implements a 
 class CustomWindow :
-    public K_Window
+	public K_Window
 {
 public:
+	//Create Window
 	using K_Window::K_Window;
+	//Main Loop for window
 	LPARAM enterLoop(void) override;
-	static LRESULT CALLBACK windowProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
-	void setWinProc(void) override;
+	//Create OpenGL
+	virtual void userFunc(void)=0;
+
+	CustomWindow* abstractcall = this;
 
 };
 

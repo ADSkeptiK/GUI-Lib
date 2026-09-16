@@ -7,13 +7,11 @@ class K_Window;
 #define K_WINDOWPTR
 typedef K_Window* K_WindowPtr;
 #endif
-
+//Renderer Abstraction
+//Constructor only sets things and doesn't invoke member functions
 class K_Renderer 
 {
-	
 	/*
-	
-	
 	K_Window(int iCmdShow, HINSTANCE hInstance, PCTSTR TemplateName,
 		PCTSTR windowTitle, WNDPROC MessagePump, DWORD type = WS_OVERLAPPEDWINDOW, const int style = 3,
 		int x = CW_USEDEFAULT, int y = CW_USEDEFAULT, int size_x = CW_USEDEFAULT,
@@ -22,9 +20,11 @@ class K_Renderer
 public:
 	//Give the initialized window structure
 	K_Renderer(K_WindowPtr windowAddress);
+
+//VIRTUALS
 	virtual void contextsetting(void)=0;
 	//virtual void draw() = 0;
-
+	virtual void renderingLoop(void)=0;
 	//Handle to device context
 	HDC deviceContextHandle;
 	//Handle to rendering context
@@ -52,6 +52,7 @@ private:
 	0,                     // reserved  
 	0, 0, 0                // layer masks ignored  
 	};
+	K_Renderer* rendererPtr = this;
 };
 
 

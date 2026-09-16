@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CustomOGLContext.h" />
     <ClInclude Include="CustomWindow.h" />
     <ClInclude Include="DX\K_DXContext.h" />
     <ClInclude Include="K_Editor.h" />
@@ -26,14 +27,17 @@
     <ClInclude Include="K_Window.h" />
     <ClInclude Include="k_resource.h" />
     <ClInclude Include="OpenGL\K_OpenGLRenderer.h" />
+    <ClInclude Include="UserWindowClass.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CustomOGLContext.cpp" />
     <ClCompile Include="CustomWindow.cpp" />
     <ClCompile Include="DX\K_DXContext.cpp" />
     <ClCompile Include="K_Renderer.cpp" />
     <ClCompile Include="K_Window.cpp" />
     <ClCompile Include="OpenGL\K_OpenGLRenderer.cpp" />
     <ClCompile Include="Test.cpp" />
+    <ClCompile Include="UserWindowClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Cliff%27s Windows GUI Lib.rc" />

@@ -1,2 +1,7 @@
-﻿  Test.cpp
+﻿  CustomWindow.cpp
+G:\Cliff's Libraries\Cliff's Windows GUI Lib\CustomWindow.cpp(22,17): warning C4101: 'hdc': unreferenced local variable
+G:\Cliff's Libraries\Cliff's Windows GUI Lib\CustomWindow.cpp(23,17): warning C4101: 'ps': unreferenced local variable
+G:\Cliff's Libraries\Cliff's Windows GUI Lib\CustomWindow.cpp(24,17): warning C4101: 'rect': unreferenced local variable
+  K_OpenGLRenderer.cpp
+  Generating Code...
   Cliff's Windows GUI Lib.vcxproj -> G:\Cliff's Libraries\Cliff's Windows GUI Lib\Debug\x86\Kliff's Windows GUI Lib.exe

@@ -2,10 +2,10 @@
 #include <tchar.h>
 
 K_Window::K_Window(int iCmdShow,HINSTANCE hInstance,PCTSTR TemplateName,
-PCTSTR windowTitle, DWORD type, const int style ,
+PCTSTR windowTitle, WNDPROC wProcedure, DWORD type, const int style ,
 int x , int y, int size_x ,
 int size_y  ,HWND parentHandleP, HMENU menuHandle, LPVOID param) : szWindowClassName{TemplateName }
-,parentHandle{parentHandleP},windowMenuHandle{menuHandle}, creationParameters{param},dwStyle{type},x{x},y{y},size_x{size_x},size_y{size_y}
+,parentHandle{parentHandleP},windowMenuHandle{menuHandle}, creationParameters{param},dwStyle{type},x{x},y{y},size_x{size_x},size_y{size_y}, windowProcedure{wProcedure}
 {
 	this->icmdshow = iCmdShow;
 	//Do the initializations
@@ -17,7 +17,9 @@ windowStructure.cbClsExtra = 0;
 windowStructure.cbWndExtra = 0;
 windowStructure.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
 windowStructure.lpszMenuName = NULL;
-
+updateWinProc();
+derivedClassPtr->initialization();
+derivedClassPtr->enterLoop();
 }
 void K_Window::setIcon(LPCTSTR iconId)
 {
@@ -27,7 +29,6 @@ void K_Window::setCursor(LPCTSTR iconId)
 {
 	windowStructure.hCursor=LoadCursor(NULL, MAKEINTRESOURCE(iconId));
 }
-
 void K_Window::setExtraByteForClass(const int count)
 {
 	windowStructure.cbClsExtra = count;
@@ -117,12 +118,34 @@ MSG* K_Window::getterMessage(void)
 	return &message;
 	// TODO: insert return statement here
 }
-
 WNDPROC* K_Window::getterWindowProc(void)
 {
 	return &windowStructure.lpfnWndProc;
 }
+void K_Window::setWinProc(WNDPROC wProc)
+{
+	windowProcedure = wProc;
+}
+//Update Window's  Proc
+void K_Window::updateWinProc(void)
+{
 
+	windowStructure.lpfnWndProc = windowProcedure;
+}
+void K_Window::initialization(void)
+{
+	// do nothing
+}
+LPARAM K_Window::enterLoop(void) {
+	while (GetMessage(getterMessage(), NULL, 0, 0))
+	{
+
+		TranslateMessage(&message);
+		DispatchMessage(&message);
+	}
+	return message.lParam;
+
+}
 
 
 
