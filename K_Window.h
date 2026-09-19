@@ -3,12 +3,13 @@
 #include <string>
 #ifndef K_WINDOW_H
 #define K_WINDOW_H
+//Shouldn't give error
 
 //Everything related to a window is packed and sets the window proc
 class K_Window
 {
 public:
-	//Mandatorily get the Name , HInstance and style
+	//Get window loading kind, the app hInstance,conceptual windowname,window title,its procedure and possibly
 	K_Window(int iCmdShow, HINSTANCE hInstance, PCTSTR TemplateName,
 		PCTSTR windowTitle,WNDPROC wProcedure, DWORD type = WS_OVERLAPPEDWINDOW, const int style = 3,
 		int x = CW_USEDEFAULT, int y = CW_USEDEFAULT, int size_x = CW_USEDEFAULT,
@@ -37,14 +38,12 @@ public:
 	HWND getWindowHandle(void);
 	MSG*  getterMessage(void);
 	WNDPROC* getterWindowProc(void);
-	void updateWinProc(void);
-	void setWinProc(WNDPROC wProc);
-	//Statics
+
 	
 	//Virtuals
 	virtual void initialization(void);
-	virtual LPARAM enterLoop(void);
-	virtual void innerFunction(void) = 0;
+	virtual LPARAM enterLoop(void)=0;
+
 	//~K_Window();
 protected:
 	// *** MANDATORIES ***
@@ -60,7 +59,7 @@ protected:
 		LPVOID creationParameters;
 		int x, y, size_x, size_y, icmdshow;
 		MSG message;
-		WNDPROC windowProcedure = NULL;
+		//WNDPROC windowProcedure = NULL;
 		//Function to happen within the window's loop
 		K_Window* derivedClassPtr=this;
 	// *** MANDATORIES ***

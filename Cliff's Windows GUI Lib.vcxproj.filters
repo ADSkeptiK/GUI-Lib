@@ -21,7 +21,7 @@
     <ClInclude Include="k_resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="K_Renderer.h">
+    <ClInclude Include="K_Renderer_Context.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="K_Editor.h">
@@ -30,16 +30,22 @@
     <ClInclude Include="DX\K_DXContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OpenGL\K_OpenGLRenderer.h">
+    <ClInclude Include="OpenGL\K_OpenGL_Context.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CustomWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CustomOGLContext.h">
+    <ClInclude Include="OpenGL\CustomOGLContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UserWindowClass.h">
+    <ClInclude Include="K_RendererWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="K_Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="K_Shader_OpenGL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,19 +59,25 @@
     <ClCompile Include="DX\K_DXContext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OpenGL\K_OpenGLRenderer.cpp">
+    <ClCompile Include="OpenGL\K_OpenGL_Context.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="K_Renderer.cpp">
+    <ClCompile Include="K_Renderer_Context.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CustomWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CustomOGLContext.cpp">
+    <ClCompile Include="OpenGL\CustomOGLContext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UserWindowClass.cpp">
+    <ClCompile Include="K_RendererWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K_Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K_Shader_OpenGL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

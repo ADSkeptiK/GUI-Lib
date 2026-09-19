@@ -1,25 +1,14 @@
-#include "../K_Renderer.h"
-#include <gl/GL.h>
-#ifndef K_OPENGLCONTEXT_H
-#define K_OPENGLCONTEXT_H
+#include "K_OpenGL_Context.h"
+//Shouldn't give error
 
-//The OpenGL Renderer Abstraction
-//The Constructor DOES invoke members in it namely contextsetting and renderingloop
-//
-class K_OpenGLRenderer  : public K_Renderer
+K_OpenGL_Context::K_OpenGL_Context(K_WindowPtr windowAddress) :K_Renderer_Context(windowAddress)
 {
-public:
-    //implements
-    void renderingLoop(void) override;
-    //using K_Renderer::K_Renderer;
-    K_OpenGLRenderer(K_WindowPtr windowAddress);
-    void   contextsetting(void);
-  virtual  void renderingProcedure(void) =0;
-  
-	//void setFormat(PPIXELFORMATDESCRIPTOR pixelFormatStructure);
-private:
-	//A pixel format descriptor
-	PIXELFORMATDESCRIPTOR pixelFormatStructure = {
+	contextsetting();
+}
+
+void K_OpenGL_Context::contextsetting(void)
+{
+    PIXELFORMATDESCRIPTOR temppixelFormatStructure = {
     sizeof(PIXELFORMATDESCRIPTOR),   // size of this pfd  
     1,                     // version number  
     PFD_DRAW_TO_WINDOW |   // support window  
@@ -39,9 +28,18 @@ private:
     0,                     // reserved  
     0, 0, 0                // layer masks ignored  
     };
-    K_OpenGLRenderer* openGLinvoker = this;
-};
-#endif // !
+    pixelFormatStructure = temppixelFormatStructure;
+	int iPixelFormat = ChoosePixelFormat(deviceContextHandle, &pixelFormatStructure);
+	SetPixelFormat(deviceContextHandle, iPixelFormat, &pixelFormatStructure);
+	renderingContext = wglCreateContext(deviceContextHandle);
+	wglMakeCurrent(deviceContextHandle, renderingContext);
+    
+}
 
 
 
+/*
+
+
+
+*/

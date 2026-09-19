@@ -1,9 +1,9 @@
 #include <windows.h>
 #include <stdio.h>
 #include "k_resource.h"
+#include "K_RendererWindow.h"
 #include "CustomWindow.h"
-#include"OpenGL/K_OpenGLRenderer.h"
-
+#include "OpenGL/CustomOGLContext.h"
 #ifndef ENTRY
 #define ENTRY int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,\
     PSTR szCmdLine, int iCmdShow) \
@@ -14,23 +14,30 @@
 #define END }
 #endif
 
-//Window Procedure Declaration
+// Okay so I unfucked the K_Renderer_Context and OpenGL side of the things to a noticable extent It's kinda
+// coming together gotta implement a new member function for the "Modern way" of
+// creating the context and then create an  object of that in the  custom window class as composition
+//HALT
+
+//Unfuck the K_Window
+
+
+
+
+
+
+//Left mid implementing the RendererWindow we could either implement OpengGL
+// as a virtual of KWindow or as a part of the render loop the choice is yours...
+//
+
 
 
 //Entry point
 ENTRY
 
-    CustomWindow window{ iCmdShow,hInstance,(PCTSTR)TEXT("MainWindow"),(PCTSTR)TEXT("Genesis Engine")};
-    window.setWinProc();
-    window.setIcon((LPCTSTR)ID_KLIFF_TEST);
-    window.setCursor(IDC_CROSS);
-    window.regClass();
-    window.createWindow();
-    window.firstRender();
-    K_OpenGLRenderer ogl_renderer{ &window };
-    window.enterLoop();
-  
-    END
+RendererWindow renderer = { iCmdShow,hInstance,TEXT("RenderingWindowAPIClass"),TEXT("Nigger") };
+renderer.initiate();
+   END
  
         /*
         We left off at the Custom Class you were considering:
@@ -129,9 +136,17 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 
 
-
-
-
+/*
+CustomWindow window{ iCmdShow,hInstance,(PCTSTR)TEXT("MainWindow"),(PCTSTR)TEXT("Genesis Engine") };
+    window.setWinProc();
+    window.setIcon((LPCTSTR)ID_KLIFF_TEST);
+    window.setCursor(IDC_CROSS);
+    window.regClass();
+    window.createWindow();
+    window.firstRender();
+    K_OpenGL_Context ogl_renderer{ &window };
+    window.enterLoop();
+    */
 
 
 

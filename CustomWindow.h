@@ -1,22 +1,22 @@
 #pragma once
 #include "K_Window.h"
-class CustomOGLContext;
-class K_Renderer;
-typedef class K_Renderer* K_rendererPtr;
+//Shouldn't give error
 
-//Implements a 
 class CustomWindow :
 	public K_Window
 {
 public:
-	//Create Window
-	using K_Window::K_Window;
-	//Main Loop for window
-	LPARAM enterLoop(void) override;
-	//Create OpenGL
-	virtual void userFunc(void)=0;
 
-	CustomWindow* abstractcall = this;
+	CustomWindow(int iCmdShow, HINSTANCE hInstance, PCTSTR TemplateName,
+		PCTSTR windowTitle, WNDPROC wProcedure, DWORD type = CS_OWNDC, const int style = 3,
+		int x = CW_USEDEFAULT, int y = CW_USEDEFAULT, int size_x = CW_USEDEFAULT,
+		int size_y = CW_USEDEFAULT, HWND parentHandleP = NULL, HMENU menuHandle = NULL, LPVOID param = NULL);
+	LPARAM enterLoop(void) override;
+	virtual void userfunction(void)=0;
+protected:
+	unsigned short windowLoopState = 1;
+
+//	CustomWindow* abstractcall = this;
 
 };
 

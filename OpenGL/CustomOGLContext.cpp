@@ -1,9 +1,11 @@
 #include "CustomOGLContext.h"
-void CustomOGLContext::renderingProcedure(void)
+//Shouldn't give error
+
+void CustomOGLContext::renderW(void)
 {
-	while (evaluator())
-	{
-		openGLCustomPtr->userGLproc();
-		SwapBuffers(deviceContextHandle);
-	}
+	glClearColor(0.1f, 0.0f, 0.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+	SwapBuffers(deviceContextHandle);
 }
+
+
